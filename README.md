@@ -1,17 +1,14 @@
-# sedaro-matlab
-A Sedaro cosimulation client for MATLAB
-This document explains the steps to start working with your Matlab client for consumption of Sedaro services.
+# Sedaro MATLAB Cosimulation Client
+
+`sedaro-matlab` is a simple client for [cosimulating](https://sedaro.github.io/openapi/#tag/Externals) with Sedaro from the MATLAB programming language.
 
 Read more about Sedaro at [docs.sedaro.com](https://docs.sedaro.com).
 
 ### API Key
 
-To access the Sedaro service via this API, you will need an API key.  You can generate an API key for your account in the
-Sedaro [Management Console](https://satellite.sedaro.com/account). Once complete, pass the API key in all requests
-via the `X_API_KEY` HTTP header.
+You will need an API key to access the Sedaro platform.  You can generate an API key for your account in the Sedaro [Management Console](https://satellite.sedaro.com/account). Once generated, you'll pass the API key to all client functions.
 
-*API keys grant full access to your account and should never be shared. If you think your API key has been compromised,
-you can revoke it in the [Management Console](https://satellite.sedaro.com/account).*
+*API keys grant full access to your account and should never be shared. If you think your API key has been compromised, you can revoke it in the [Management Console](https://satellite.sedaro.com/account).*
 
 ### Community, Support, Discussion
 
@@ -22,42 +19,23 @@ If you have any issues or suggestions, please reach out:
 
 ### Known Issues
 
-- Error responses are more specific than what is shown throughout the documentation.  A 4xx or 5xx error will be returned
-in all error cases.  Only a `200` status indicates success.  See a given error response for additional details.
+- Error responses are more specific than what is shown throughout the documentation.  A 4xx or 5xx error will be returned in all error cases.  Only a `200` status indicates success.  See a given error response for additional details.
 
 ## Installation & Usage
 
-### Requirements.
-
-Download Matlab environment via [Download Matlab](https://www.mathworks.com/downloads/).
-
 ### Cloning the Repo
 
-Clone the following repo from GitHub via [Matlab Repo](https://github.com/sedaro/sedaro-matlab/tree/main/%2Bsedaro) and you can used it to interact with Sedaro API from your Matlab environment.
+To get started, clone this repository into a location that is accessible from your MATLAB IDE.
 
+### Using `sedaro`
 
-## Getting Started
+Within the `'+sedaro'` directory you will find the following files:
 
-After following the [installation procedure](#installation--usage) instruction:
-
-
-
-Navigate to your `'sedaro-matlab/+sedaro'` directory, where you will find the following files:
-
-* `'externals.m'`: A file that contains the main example demonstrating how to interact with the Sedaro API as well as function definitions.
-
-* `'deserialize.m'`: A file that contains the implementation of the deserialization process.
-
-* `'serialize.m'`: A file that contains the implementation of the serialization process.
-
-* `'is_struct_array.m'`: A file that contains a function that checks if a variable is a struct array.
-
-* `'test_serdes.m'`: A file that tests multiple input values to serialize/ deserialize.
-
-* `'Secrets.m'`: A file that is used to retrieve the host URL, API key, branch IDs, workspace ID, or any other secrets from `'config.properties'`.
-
-* `'config.properties'`: A file that contains key-value pairs of the secrets used to access the API. You need to retrieve these credentials from the Sedaro website [Home Page](https://satellite.sedaro.com) and assign them to the corresponding key in this file.
-
+* `'externals.m'`: A file that contains the main example demonstrating how to interact with the Sedaro API via a simple cosimulation example.
+* `'deserialize.m'`: Function for deserializing cosimulator responses from Sedaro into MATLAB.
+* `'serialize.m'`: Function for serializing cosimulator requests from MATLAB into Sedaro.
+* `'test_serdes.m'`: `serialize`/`deserialize` unit tests.
+* `'config.properties'`: A file that contains key-value pairs of the secrets/credentials and other parameters that are used to access the Sedaro API. You can retrieve these credentials from the Sedaro platform [here](https://satellite.sedaro.com).
 
 
 Example: (Please follow the same format, leaving a space before and after the equal sign)
@@ -70,4 +48,6 @@ Example: (Please follow the same format, leaving a space before and after the eq
 
     SUPER_SAT_SCEN_ID = HIJ
 
-You can now navigate to your `'sedaro-matlab/+sedaro'` open your `'externals.m'` and run the examples usage implemented in it.
+## Running the Example
+
+Navigate to the `'+sedaro'` directory in your MATLAB IDE and run `'externals.m'`.
